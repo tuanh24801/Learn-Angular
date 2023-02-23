@@ -1,0 +1,14 @@
+<app-button
+  color="{{ showAddTask ? 'red' : 'green' }}"
+  text="{{ showAddTask ? 'Close' : 'Add' }}"
+  (btnClick)="toggleAddTask()"
+>
+</app-button>
+<app-add-task class="add-tasks" *ngIf="showAddTask" (onAddTask)="addTask($event)"></app-add-task>
+<app-task-item
+  *ngFor="let task of tasks"
+  [task]="task"
+  (onDeleteTask)="deleteTask(task)"
+  (onToggleReminder)="toggleReminder(task)"
+></app-task-item>
+
